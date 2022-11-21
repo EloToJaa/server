@@ -90,5 +90,4 @@ all:
 
     zsh_ohmy_disable_auto_update: false
 
-    # dirs:
-    #   - .pyenv
+    dirs: []
