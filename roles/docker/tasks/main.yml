@@ -50,3 +50,7 @@
     state: started
     enabled: yes
   become: true
+
+- name: Create a network
+  community.docker.docker_network:
+    name: proxy
