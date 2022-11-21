@@ -1,0 +1,10 @@
+software:
+  - docker
+  - ssh
+  - samba
+  - qemu
+
+apt_software:
+  - gcc
+  - g++
+  - make

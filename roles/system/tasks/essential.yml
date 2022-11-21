@@ -1,0 +1,83 @@
+- name: Generate the locale
+  locale_gen:
+    name: "{{ locale }}"
+    state: present
+  become: true
+
+- name: Update and upgrade apt packages
+  apt:
+    upgrade: yes
+    autoremove: yes
+    update_cache: yes
+  become: true
+
+- name: Install unattended upgrades package
+  package:
+    name: unattended-upgrades
+    state: present
+  become: true
+
+- name: Copy unattended-upgrades configuration files in place
+  template:
+    src: "{{ item }}.j2"
+    dest: "/etc/apt/apt.conf.d/{{ item }}"
+    owner: root
+    group: root
+    mode: 0644
+  with_items:
+    - 10periodic
+    - 50unattended-upgrades
+  become: true
+  
+- name: Install qemu-guest-agent
+  package:
+    name: qemu-guest-agent
+    state: present
+  when: software|select("equalto", "qemu")
+  become: true
+
+- name: Set static IP
+  nmcli:
+    conn_name: "{{ item.ifname }}"
+    ifname: "{{ item.ifname }}"
+    ip4: "{{ item.ip4 }}"
+    gw4: "{{ item.gw4 }}"
+    dns4: "{{ item.dns4 }}"
+    state: present
+    type: ethernet
+  with_items: "{{ networking }}"
+  when: set_static
+  become: true
+
+- name: Update apt and install software
+  block:
+    - name: apt software
+      package:
+        update_cache: yes
+        name: "{{ apt_software }}"
+        state: present
+      become: true
+    
+    - name: pip software
+      pip:
+        name: "{{ pip_software }}"
+        state: present
+      become: true
+
+- name: Populate service facts
+  service_facts:
+
+- name: Stop snapd.apparmor
+  service:
+    name: snapd.apparmor
+    state: stopped
+  when: "'snapd.apparmor.service' in ansible_facts.services"
+  become: true
+
+- name: Start and enable snapd.apparmor
+  service:
+    name: snapd.apparmor
+    state: started
+    enabled: yes
+  when: "'snapd.apparmor.service' in ansible_facts.services"
+  become: true

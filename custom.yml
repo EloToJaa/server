@@ -1,0 +1,21 @@
+enable_ssh_keygen: false
+enable_username_creation: false
+notifications: false
+
+shares:
+  - uri: "//192.168.0.31/Server"
+    mountpoint: "/mnt/Server"
+  - uri: "//192.168.0.31/Dev"
+    mountpoint: "/mnt/Dev"
+  - uri: "//192.168.0.31/Data"
+    mountpoint: "/mnt/Data"
+
+set_static: true
+networking:
+  - ifname: ens18
+    ip4: 192.168.0.32/24
+    gw4: 192.168.0.1
+    dns4:
+      - 192.168.0.31
+      - 1.1.1.1
+      - 1.0.0.1

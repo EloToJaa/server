@@ -1,0 +1,27 @@
+#!/usr/bin/env ansible-playbook
+
+- hosts: all
+  become: false
+
+  vars_files:
+    - custom.yml
+    - secret.yml
+    - software.yml
+
+  roles:
+    - role: vaulttec.zsh
+
+    - role: system
+
+    - role: ssh
+      when: software|select("equalto", "ssh")
+
+    - role: samba
+      when: software|select("equalto", "samba")
+    
+    - role: docker
+
+    - role: adminer
+      when: software|select("equalto", "adminer")
+    
+    - role: finish

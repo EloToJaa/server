@@ -1,0 +1,16 @@
+- name: "Copy {{ role_name }} files"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ docker_dir }}/{{ role_name }}/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0600
+  with_items:
+    - docker-compose.yml
+    - adminer.css
+  become: true
+
+- name: "Run {{ role_name }}"
+  community.docker.docker_compose:
+    project_src: "{{ docker_dir }}/{{ role_name }}"
+    state: present
