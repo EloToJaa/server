@@ -4,6 +4,8 @@ software:
   - samba
   - qemu
   - adminer
+  - traefik
+  - authelia
 
 apt_software:
   - gcc
@@ -14,3 +16,5 @@ apt_software:
   - python3
   - pip
   - git
+  - nano
+  - vim

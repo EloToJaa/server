@@ -4,7 +4,7 @@ services:
     image: adminer
     container_name: adminer
     volumes:
-      - {{ var.INT_DIR }}/Stack/adminer/adminer.css:/var/www/html/adminer.css
+      - {{ var.INT_DIR }}/adminer/adminer.css:/var/www/html/adminer.css
     networks:
       - proxy
     labels:
