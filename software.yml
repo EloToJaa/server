@@ -1,9 +1,4 @@
 software:
-  - network-manager
-  - locales
-  - python3
-  - pip
-  - git
   - docker
   - ssh
   - samba
@@ -13,3 +8,8 @@ apt_software:
   - gcc
   - g++
   - make
+  - network-manager
+  - locales
+  - python3
+  - pip
+  - git
