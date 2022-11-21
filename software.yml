@@ -3,6 +3,7 @@ software:
   - ssh
   - samba
   - qemu
+  - adminer
 
 apt_software:
   - gcc
