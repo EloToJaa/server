@@ -30,19 +30,6 @@
   when: software|select("equalto", "qemu")
   become: true
 
-- name: Set static IP
-  nmcli:
-    conn_name: "{{ item.ifname }}"
-    ifname: "{{ item.ifname }}"
-    ip4: "{{ item.ip4 }}"
-    gw4: "{{ item.gw4 }}"
-    dns4: "{{ item.dns4 }}"
-    state: present
-    type: ethernet
-  with_items: "{{ networking }}"
-  when: set_static
-  become: true
-
 - name: Update apt and install software
   block:
     - name: apt software
@@ -57,6 +44,19 @@
         name: "{{ pip_software }}"
         state: present
       become: true
+
+- name: Set static IP
+  nmcli:
+    conn_name: "{{ item.ifname }}"
+    ifname: "{{ item.ifname }}"
+    ip4: "{{ item.ip4 }}"
+    gw4: "{{ item.gw4 }}"
+    dns4: "{{ item.dns4 }}"
+    state: present
+    type: ethernet
+  with_items: "{{ networking }}"
+  when: set_static
+  become: true
 
 - name: Generate the locale
   locale_gen:
