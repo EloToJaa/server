@@ -38,12 +38,6 @@
         name: "{{ apt_software }}"
         state: present
       become: true
-    
-    - name: pip software
-      pip:
-        name: "{{ pip_software }}"
-        state: present
-      become: true
 
 - name: Set static IP
   nmcli:
