@@ -1,3 +1,8 @@
+- name: "Create directory for {{ role_name }} files"
+  file:
+    path: "{{ docker_dir }}/{{ role_name }}"
+    state: directory
+
 - name: "Copy {{ role_name }} files"
   template:
     src: "{{ item }}.j2"
