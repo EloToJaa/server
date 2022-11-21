@@ -1,4 +1,8 @@
 software:
+  - locales
+  - python3
+  - pip
+  - git
   - docker
   - ssh
   - samba
