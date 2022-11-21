@@ -39,19 +39,6 @@
         state: present
       become: true
 
-- name: Set static IP
-  nmcli:
-    conn_name: "{{ item.ifname }}"
-    ifname: "{{ item.ifname }}"
-    ip4: "{{ item.ip4 }}"
-    gw4: "{{ item.gw4 }}"
-    dns4: "{{ item.dns4 }}"
-    state: present
-    type: ethernet
-  with_items: "{{ networking }}"
-  when: set_static
-  become: true
-
 - name: Generate the locale
   locale_gen:
     name: "{{ locale }}"
@@ -74,4 +61,17 @@
     state: started
     enabled: yes
   when: "'NetworkManager.service' in ansible_facts.services"
+  become: true
+
+- name: Set static IP
+  nmcli:
+    conn_name: "{{ item.ifname }}"
+    ifname: "{{ item.ifname }}"
+    ip4: "{{ item.ip4 }}"
+    gw4: "{{ item.gw4 }}"
+    dns4: "{{ item.dns4 }}"
+    state: present
+    type: ethernet
+  with_items: "{{ networking }}"
+  when: set_static
   become: true
