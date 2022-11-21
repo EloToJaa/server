@@ -63,3 +63,21 @@
     name: "{{ locale }}"
     state: present
   become: true
+
+- name: Populate service facts
+  service_facts:
+
+- name: Stop NetworkManager
+  service:
+    name: NetworkManager
+    state: stopped
+  when: "'NetworkManager.service' in ansible_facts.services"
+  become: true
+
+- name: Start and enable NetworkManager
+  service:
+    name: NetworkManager
+    state: started
+    enabled: yes
+  when: "'NetworkManager.service' in ansible_facts.services"
+  become: true

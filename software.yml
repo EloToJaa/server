@@ -1,4 +1,5 @@
 software:
+  - network-manager
   - locales
   - python3
   - pip
