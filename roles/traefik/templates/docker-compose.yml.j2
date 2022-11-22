@@ -15,7 +15,6 @@ services:
     volumes:
       - /etc/localtime:/etc/localtime:ro
       - {{ var.USER_DIR }}/cert/acme.json:/etc/traefik/acme.json
-      - {{ var.INT_DIR }}/Stack/traefik/access.log:/etc/traefik/access.log
       - {{ var.INT_DIR }}/Stack/traefik/traefik.yml:/etc/traefik/traefik.yml:ro
       - {{ var.INT_DIR }}/Stack/traefik/fileConfig.yml:/etc/traefik/fileConfig.yml:ro
     labels:
