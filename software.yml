@@ -5,8 +5,6 @@ software:
   - qemu
   - adminer
   - traefik
-  - authelia
-  - traefik
   - postgres
   - redis
   - authelia
