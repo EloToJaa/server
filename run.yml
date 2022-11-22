@@ -21,6 +21,15 @@
     
     - role: docker
 
+    - role: postgres
+      when: software|select("equalto", "postgres")
+    
+    - role: redis
+      when: software|select("equalto", "redis")
+    
+    - role: authelia
+      when: software|select("equalto", "authelia")
+
     - role: adminer
       when: software|select("equalto", "adminer")
     

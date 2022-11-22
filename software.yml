@@ -7,6 +7,9 @@ software:
   - traefik
   - authelia
   - traefik
+  - postgres
+  - redis
+  - authelia
 
 apt_software:
   - gcc
