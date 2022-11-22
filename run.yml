@@ -9,15 +9,15 @@
     - software.yml
 
   roles:
-    - role: vaulttec.zsh
+    # - role: vaulttec.zsh
 
-    - role: system
+    # - role: system
 
-    - role: ssh
-      when: software|select("equalto", "ssh")
+    # - role: ssh
+    #   when: software|select("equalto", "ssh")
 
-    - role: samba
-      when: software|select("equalto", "samba")
+    # - role: samba
+    #   when: software|select("equalto", "samba")
     
     - role: docker
 
@@ -27,4 +27,4 @@
     - role: traefik
       when: software|select("equalto", "traefik")
     
-    - role: finish
+    # - role: finish
