@@ -6,6 +6,7 @@ software:
   - adminer
   - traefik
   - authelia
+  - traefik
 
 apt_software:
   - gcc

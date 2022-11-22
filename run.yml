@@ -24,4 +24,7 @@
     - role: adminer
       when: software|select("equalto", "adminer")
     
+    - role: traefik
+      when: software|select("equalto", "traefik")
+    
     - role: finish
