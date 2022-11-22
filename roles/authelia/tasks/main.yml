@@ -15,6 +15,8 @@
     mode: 0600
   with_items:
     - docker-compose.yml
+    - configuration.yml
+    - user_database.yml
   become: true
 
 - name: "Run {{ role_name }}"
