@@ -16,7 +16,7 @@
   with_items:
     - docker-compose.yml
     - configuration.yml
-    - user_database.yml
+    - users_database.yml
   become: true
 
 - name: "Run {{ role_name }}"
