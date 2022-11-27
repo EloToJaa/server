@@ -10,12 +10,4 @@ shares:
   - uri: "//192.168.0.31/Data"
     mountpoint: "/mnt/Data"
 
-set_static: true
-networking:
-  - ifname: ens18
-    ip4: 192.168.0.32/24
-    gw4: 192.168.0.1
-    dns4:
-      - 192.168.0.31
-      - 1.1.1.1
-      - 1.0.0.1
+
