@@ -17,13 +17,6 @@
     - docker-compose.yml
   become: true
 
-- name: "Run {{ role_name }}"
-  community.docker.docker_compose:
-    project_src: "{{ docker_dir }}/{{ role_name }}"
-    state: present
-  become: true
-  ignore_errors: true
-
 - name: "Copy {{ role_name }} files"
   template:
     src: "{{ item }}.j2"
@@ -34,3 +27,10 @@
   with_items:
     - config.json
   become: true
+
+- name: "Run {{ role_name }}"
+  community.docker.docker_compose:
+    project_src: "{{ docker_dir }}/{{ role_name }}"
+    state: present
+  become: true
+  ignore_errors: true

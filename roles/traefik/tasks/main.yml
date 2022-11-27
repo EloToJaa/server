@@ -19,6 +19,17 @@
     - traefik.yml
   become: true
 
+- name: "Copy {{ role_name }} files"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ home }}/cert/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0600
+  with_items:
+    - acme.json
+  become: true
+
 - name: "Run {{ role_name }}"
   community.docker.docker_compose:
     project_src: "{{ docker_dir }}/{{ role_name }}"
