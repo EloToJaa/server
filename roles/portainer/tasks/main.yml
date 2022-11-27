@@ -23,3 +23,14 @@
     state: present
   become: true
   ignore_errors: true
+
+- name: "Copy {{ role_name }} files"
+  template:
+    src: "{{ item }}.j2"
+    dest: "{{ home }}/.docker/{{ item }}"
+    owner: "{{ username }}"
+    group: "{{ username }}"
+    mode: 0644
+  with_items:
+    - config.json
+  become: true
