@@ -37,7 +37,7 @@ all:
     # Set the time at which the system should reboot after installing updates (24H format)
     autoupdate_reboot_time: 03:00
 
-    docker_dir: "/opt/docker"
+    docker_dir: "/mnt/Server/Docker"
 
     set_static: false
 
