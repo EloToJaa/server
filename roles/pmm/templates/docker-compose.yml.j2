@@ -1,11 +1,9 @@
 version: '3'
 services:
   plex-meta-manager:
-    image: lscr.io/linuxserver/plex-meta-manager:latest
+    image: meisnate12/plex-meta-manager
     container_name: plex-meta-manager
     environment:
-      - PUID={{ var.USER_UID }}
-      - PGID={{ var.USER_GID }}
       - TZ={{ var.TZ }}
       - PMM_TIME=03:00
     volumes:
