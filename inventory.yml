@@ -39,8 +39,6 @@ all:
 
     docker_dir: "/mnt/Server/Docker"
 
-    set_static: false
-
     # You can set it to a different port in order to avoid automated scanner bots
     ssh_port: 22
 
