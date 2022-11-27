@@ -4,12 +4,12 @@ services:
     image: lscr.io/linuxserver/plex-meta-manager:latest
     container_name: plex-meta-manager
     environment:
-      - PUID=${USER_UID}
-      - PGID=${USER_GID}
-      - TZ=${TZ}
+      - PUID={{ var.USER_UID }}
+      - PGID={{ var.USER_GID }}
+      - TZ={{ var.TZ }}
       - PMM_TIME=03:00
     volumes:
-      - ${INT_DIR}/Config/PlexMetaManager:/config
+      - {{ var.INT_DIR }}/Data/pmm:/config
     restart: unless-stopped
     networks:
       - proxy
