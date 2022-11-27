@@ -44,3 +44,24 @@
     name: "{{ locale }}"
     state: present
   become: true
+
+- name: Update SSH configuration to be more secure
+  register: ssh_config
+  lineinfile:
+    dest: "/etc/systemd/resolved.conf"
+    regexp: "{{ item.regexp }}"
+    line: "{{ item.line }}"
+    state: present
+    mode: 0644
+  with_items:
+    - regexp: "^#?DNS="
+      line: "DNS=127.0.0.1"
+    - regexp: "^#?DNSStubListener="
+      line: "DNSStubListener=no"
+  become: true
+
+- name: Create a symlink
+  file:
+    src: "/run/systemd/resolve/resolv.conf"
+    dest: "/etc/resolv.conf"
+    state: link
