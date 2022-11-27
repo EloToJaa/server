@@ -24,3 +24,4 @@
     project_src: "{{ docker_dir }}/{{ role_name }}"
     state: present
   become: true
+  ignore_errors: true
