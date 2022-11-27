@@ -9,7 +9,7 @@ services:
       - TZ={{ var.TZ }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr
     volumes:
-      - {{ var.INT_DIR }}/Config/Radarr:/config
+      - {{ var.INT_DIR }}/Data/radarr:/config
       - {{ var.EXT_DIR }}/Torrents:/torrents
     restart: unless-stopped
     networks:
