@@ -6,7 +6,7 @@ services:
     volumes:
       - {{ var.INT_DIR }}/Data/authelia:/config
       - {{ var.INT_DIR }}/authelia/configuration.yml:/config/configuration.yml
-      - {{ var.INT_DIR }}/authelia/user_database.yml:/config/user_database.yml
+      - {{ var.INT_DIR }}/authelia/users_database.yml:/config/users_database.yml
     environment:
       - TZ={{ var.TZ }}
     restart: always
