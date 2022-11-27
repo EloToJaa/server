@@ -21,3 +21,4 @@
   community.docker.docker_compose:
     project_src: "{{ docker_dir }}/{{ role_name }}"
     state: present
+  become: true
