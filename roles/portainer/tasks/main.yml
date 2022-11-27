@@ -17,7 +17,15 @@
     - docker-compose.yml
   become: true
 
-- name: "Copy {{ role_name }} files"
+- name: "Create .docker directory"
+  file:
+    path: "{{ home }}/.docker"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  become: true
+
+- name: "Create config.json"
   template:
     src: "{{ item }}.j2"
     dest: "{{ home }}/.docker/{{ item }}"
