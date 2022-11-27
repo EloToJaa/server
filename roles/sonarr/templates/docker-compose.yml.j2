@@ -1,0 +1,24 @@
+version: '3'
+services:
+  sonarr:
+    image: ghcr.io/linuxserver/sonarr
+    container_name: sonarr
+    environment:
+      - PUID={{ var.USER_UID }}
+      - PGID={{ var.USER_GID }}
+      - TZ={{ var.TZ }}
+      - DOCKER_MODS=ghcr.io/gilbn/theme.park:sonarr
+    volumes:
+      - {{ var.INT_DIR }}/Data/sonarr:/config
+      - {{ var.EXT_DIR }}/Torrents:/torrents
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.sonarr.entryPoints: https
+
+networks:
+  proxy:
+    driver: bridge
+    external: true

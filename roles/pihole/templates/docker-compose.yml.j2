@@ -1,0 +1,29 @@
+version: '3'
+services:
+  pihole:
+    image: pihole/pihole:latest
+    container_name: pihole
+    environment:
+      - TZ={{ var.TZ }}
+      - PIHOLE_UID={{ var.USER_UID }}
+      - PIHOLE_GID={{ var.USER_GID }}
+    volumes:
+      - {{ var.INT_DIR }}/Data/pihole/etc-pihole:/etc/pihole
+      - {{ var.INT_DIR }}/Data/pihole/etc-dnsmasq.d:/etc/dnsmasq.d
+    ports:
+      - "53:53/tcp"
+      - "53:53/udp"
+      - "9999:80/tcp"
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.pihole.entryPoints: https
+      traefik.http.services.pihole.loadbalancer.server.port: 80
+      traefik.http.routers.pihole.rule: Host(`pihole.local.{{ var.DOMAIN }}`)
+
+networks:
+  proxy:
+    driver: bridge
+    external: true
