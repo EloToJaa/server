@@ -14,8 +14,8 @@
     group: "{{ username }}"
     mode: 0600
   with_items:
-    - configuration.yml
     - docker-compose.yml
+    - configuration.yml
     - user_database.yml
   become: true
 
