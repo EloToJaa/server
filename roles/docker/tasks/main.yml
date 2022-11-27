@@ -54,3 +54,4 @@
 - name: Create proxy network
   community.docker.docker_network:
     name: proxy
+  become: true
