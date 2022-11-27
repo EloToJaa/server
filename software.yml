@@ -1,13 +1,35 @@
 software:
-  - docker
   - ssh
   - samba
   - qemu
+  - docker
   - adminer
-  - traefik
-  - postgres
-  - redis
+  - apache
   - authelia
+  - bazarr
+  - cloudflare-ddns
+  - guacamole
+  - heimdall
+  - notifiarr
+  - ombi
+  - pihole
+  - plex
+  - plextrakt
+  - pmm
+  - portainer
+  - postgres
+  - radarr
+  - redis
+  - redis-commander
+  - requestrr
+  - shlink
+  - sonarr
+  - tautulli
+  - torrenting
+  - traefik
+  - uptime
+  - vaultwarden
+  - watchtower
 
 apt_software:
   - gcc
