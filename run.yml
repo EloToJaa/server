@@ -21,6 +21,8 @@
     
     - role: docker
 
+    - role: finish
+
     - role: postgres
       when: software|select("equalto", "postgres")
     
@@ -101,5 +103,3 @@
     
     - role: watchtower
       when: software|select("equalto", "watchtower")
-    
-    - role: finish
