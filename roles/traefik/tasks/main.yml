@@ -19,7 +19,15 @@
     - traefik.yml
   become: true
 
-- name: "Copy {{ role_name }} files"
+- name: "Create directory for certs"
+  file:
+    path: "{{ home }}/cert"
+    state: directory
+    owner: "{{ username }}"
+    group: "{{ username }}"
+  become: true
+
+- name: "Create acme.json"
   template:
     src: "{{ item }}.j2"
     dest: "{{ home }}/cert/{{ item }}"
