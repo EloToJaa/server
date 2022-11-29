@@ -10,9 +10,5 @@ timezone: Europe/Warsaw
 shares:
   - uri: "//192.168.0.31/Server"
     mountpoint: "/mnt/Server"
-  - uri: "//192.168.0.31/Dev"
-    mountpoint: "/mnt/Dev"
   - uri: "//192.168.0.31/Data"
     mountpoint: "/mnt/Data"
-
-
