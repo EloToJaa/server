@@ -15,6 +15,9 @@
     mode: 0600
   with_items:
     - docker-compose.yml
+    - config.yml
+    - TV.yml
+    - Movies.yml
   become: true
 
 - name: "Run {{ role_name }}"
