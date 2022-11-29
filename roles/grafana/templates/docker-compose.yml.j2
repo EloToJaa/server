@@ -15,6 +15,19 @@ services:
       traefik.http.routers.grafana.entryPoints: https
       traefik.http.services.grafana.loadbalancer.server.port: 3000
       traefik.http.routers.grafana.middlewares: auth@file
+  
+  backup:
+    image: offen/docker-volume-backup:v2
+    container_name: grafana-bp
+    environment:
+      BACKUP_FILENAME: backup-%Y-%m-%dT%H-%M-%S.tar.gz
+      BACKUP_PRUNING_PREFIX: backup-
+      BACKUP_CRON_EXPRESSION: {{ backup_cron }}
+      BACKUP_RETENTION_DAYS: {{ backup_retention }}
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+      - grafana-data:/backup:ro
+      - /mnt/Data/Backups/plex:/archive
 
 networks:
   proxy:

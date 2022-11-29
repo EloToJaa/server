@@ -41,6 +41,9 @@ all:
 
     run_containers: true
 
+    backup_cron: "0 5 * * *"
+    backup_retention: 7
+
     docker_dir: "/opt/docker"
     data_dir: "/data"
 
