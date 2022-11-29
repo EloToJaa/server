@@ -29,6 +29,10 @@ software:
   - uptime
   - vaultwarden
   - watchtower
+  - cadvisor
+  - nodeexporter
+  - prometheus
+  - grafana
 
 apt_software:
   - gcc

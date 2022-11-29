@@ -100,3 +100,15 @@
     
     - role: watchtower
       when: software|select("equalto", "watchtower")
+    
+    - role: nodeexporter
+      when: software|select("equalto", "nodeexporter")
+    
+    - role: cadvisor
+      when: software|select("equalto", "cadvisor")
+    
+    - role: prometheus
+      when: software|select("equalto", "prometheus")
+    
+    - role: grafana
+      when: software|select("equalto", "grafana")
