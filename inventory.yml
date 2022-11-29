@@ -35,7 +35,7 @@ all:
     repo_name: server
 
     # Set the time at which the system should reboot after installing updates (24H format)
-    autoupdate_reboot_time: 03:00
+    autoupdate_reboot_time: 03:30
 
     docker_dir: "/opt/docker"
     data_dir: "/data"
