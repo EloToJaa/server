@@ -39,6 +39,8 @@ all:
     pmm_time: 03:00
     plextrakt_interval: 12h
 
+    run_containers: true
+
     docker_dir: "/opt/docker"
     data_dir: "/data"
 

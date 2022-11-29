@@ -7,6 +7,8 @@ data_dir: /mnt/Data
 
 plextrakt_interval: 3h
 
+run_containers: false
+
 timezone: Europe/Warsaw
 
 shares:
