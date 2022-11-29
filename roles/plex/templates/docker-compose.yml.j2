@@ -11,7 +11,7 @@ services:
       - PLEX_CLAIM={{ var.PLEX_CLAIM }}
     volumes:
       - plex-data:/config
-      - {{ data_dir_DIR }}/Torrents/:/data
+      - {{ data_dir }}/Torrents/:/data
     restart: unless-stopped
 
 volumes:

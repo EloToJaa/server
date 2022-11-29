@@ -10,7 +10,7 @@ services:
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr
     volumes:
       - bazarr-config:/config
-      - {{ data_dir_DIR }}/Torrents:/torrents
+      - {{ data_dir }}/Torrents:/torrents
     restart: unless-stopped
     networks:
       - proxy
