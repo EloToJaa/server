@@ -5,10 +5,10 @@ services:
     container_name: auth
     volumes:
       - authelia-config:/config
-      - {{ var.INT_DIR }}/authelia/configuration.yml:/config/configuration.yml
-      - {{ var.INT_DIR }}/authelia/users_database.yml:/config/users_database.yml
+      - {{ docker_dir }}/authelia/configuration.yml:/config/configuration.yml
+      - {{ docker_dir }}/authelia/users_database.yml:/config/users_database.yml
     environment:
-      - TZ={{ var.TZ }}
+      - TZ={{ timezone }}
     restart: always
     networks:
       - proxy

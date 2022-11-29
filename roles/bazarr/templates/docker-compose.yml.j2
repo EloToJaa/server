@@ -6,11 +6,11 @@ services:
     environment:
       - PUID={{ var.USER_UID }}
       - PGID={{ var.USER_GID }}
-      - TZ={{ var.TZ }}
+      - TZ={{ timezone }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr
     volumes:
       - bazarr-config:/config
-      - {{ var.EXT_DIR }}/Torrents:/torrents
+      - {{ data_dir_DIR }}/Torrents:/torrents
     restart: unless-stopped
     networks:
       - proxy
