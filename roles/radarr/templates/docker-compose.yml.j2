@@ -9,7 +9,7 @@ services:
       - TZ={{ var.TZ }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:radarr
     volumes:
-      - {{ var.INT_DIR }}/Data/radarr:/config
+      - radarr-data:/config
       - {{ var.EXT_DIR }}/Torrents:/torrents
     restart: unless-stopped
     networks:
@@ -20,5 +20,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  radarr-data:

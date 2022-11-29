@@ -7,7 +7,7 @@ services:
       - proxy
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
-      - {{ var.INT_DIR }}/Data/portainer/:/data
+      - portainer-data:/data
     labels:
       traefik.enable: true
       traefik.http.routers.portainer.entryPoints: https
@@ -17,5 +17,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  portainer-data:

@@ -15,7 +15,7 @@ services:
       - VPN_ADDITIONAL_PORTS=9696/tcp,9117/tcp
       - PRIVOXY_ENABLED=false
     volumes:
-      - {{ var.INT_DIR }}/Data/qbittorrent:/config
+      - qbittorrent-config:/config
       - {{ var.EXT_DIR }}/Torrents:/torrents
     cap_add:
       - NET_ADMIN
@@ -47,12 +47,15 @@ services:
       - TZ={{ var.TZ }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:jackett
     volumes:
-      - {{ var.INT_DIR }}/Data/jackett:/config
+      - jackett-config:/config
     depends_on:
       - qbittorrent
     restart: always
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  jackett-config:
+  qbittorrent-config:

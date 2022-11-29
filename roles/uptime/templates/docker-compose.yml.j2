@@ -4,7 +4,7 @@ services:
     image: louislam/uptime-kuma:1
     container_name: uptime
     volumes:
-      - {{ var.INT_DIR }}/Data/uptime:/app/data
+      - uptime-data:/app/data
     security_opt:
       - no-new-privileges:true
     restart: unless-stopped
@@ -16,5 +16,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  uptime-data:

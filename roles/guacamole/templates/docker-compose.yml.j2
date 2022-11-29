@@ -4,7 +4,7 @@ services:
     image: maxwaldorf/guacamole
     container_name: guacamole
     volumes:
-      - {{ var.INT_DIR }}/Data/guacamole/guacamole:/config
+      - guacamole-config:/config
     restart: unless-stopped
     networks:
       - proxy
@@ -15,5 +15,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  guacamole-config:

@@ -10,6 +10,9 @@ services:
       - VERSION=docker
       - PLEX_CLAIM={{ var.PLEX_CLAIM }}
     volumes:
-      - {{ var.INT_DIR }}/Data/plex/:/config
+      - plex-data:/config
       - {{ var.EXT_DIR }}/Torrents/:/data
     restart: unless-stopped
+
+volumes:
+  plex-data:

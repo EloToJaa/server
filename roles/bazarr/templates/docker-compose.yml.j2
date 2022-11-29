@@ -9,7 +9,7 @@ services:
       - TZ={{ var.TZ }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:bazarr
     volumes:
-      - {{ var.INT_DIR }}/Data/bazarr:/config
+      - bazarr-config:/config
       - {{ var.EXT_DIR }}/Torrents:/torrents
     restart: unless-stopped
     networks:
@@ -20,5 +20,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  bazarr-config:

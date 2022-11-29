@@ -4,7 +4,7 @@ services:
     image: authelia/authelia
     container_name: auth
     volumes:
-      - {{ var.INT_DIR }}/Data/authelia:/config
+      - authelia-config:/config
       - {{ var.INT_DIR }}/authelia/configuration.yml:/config/configuration.yml
       - {{ var.INT_DIR }}/authelia/users_database.yml:/config/users_database.yml
     environment:
@@ -18,5 +18,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  authelia-config:

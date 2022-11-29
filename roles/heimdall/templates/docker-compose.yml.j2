@@ -8,7 +8,7 @@ services:
       - PGID={{ var.USER_GID }}
       - TZ={{ var.TZ }}
     volumes:
-      - {{ var.INT_DIR }}/Data/heimdall:/config
+      - heimdall-config:/config
     restart: unless-stopped
     networks:
       - proxy
@@ -20,5 +20,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  heimdall-config:

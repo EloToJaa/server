@@ -9,12 +9,14 @@ services:
       - TZ={{ var.TZ }}
       - PMM_TIME=03:00
     volumes:
-      - {{ var.INT_DIR }}/Data/pmm:/config
+      - pmm-config:/config
     restart: unless-stopped
     networks:
       - proxy
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  pmm-config:

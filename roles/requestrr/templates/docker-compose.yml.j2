@@ -4,7 +4,7 @@ services:
     container_name: requestrr
     image: darkalfx/requestrr
     volumes:
-      - {{ var.INT_DIR }}/Data/requestrr:/root/config
+      - requestrr-data:/root/config
     restart: unless-stopped
     networks:
       - proxy
@@ -16,5 +16,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  requestrr-data:

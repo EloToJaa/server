@@ -9,7 +9,7 @@ services:
       - TZ={{ var.TZ }}
       - DOCKER_MODS=ghcr.io/gilbn/theme.park:tautulli
     volumes:
-      - {{ var.INT_DIR }}/Data/tautulli:/config
+      - tautulli-data:/config
     restart: unless-stopped
     networks:
       - proxy
@@ -19,5 +19,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  tautulli-data:

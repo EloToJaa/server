@@ -6,7 +6,7 @@ services:
     hostname: redis
     command: redis-server --requirepass {{ var.REDIS_PASSWORD }}
     volumes:
-      - {{ var.INT_DIR }}/Data/redis:/data
+      - redis-data:/data
     ports:
       - 6379:6379
     restart: always
@@ -15,5 +15,7 @@ services:
 
 networks:
   proxy:
-    driver: bridge
     external: true
+
+volumes:
+  redis-data:

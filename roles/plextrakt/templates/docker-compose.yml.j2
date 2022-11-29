@@ -16,4 +16,7 @@ services:
     image: ghcr.io/taxel/plextraktsync
     container_name: plextraktsync
     volumes:
-      - {{ var.INT_DIR }}/Data/plextrakt:/app/config
+      - plextrakt-config:/app/config
+
+volumes:
+  plextrakt-config:
