@@ -23,5 +23,14 @@
   community.docker.docker_compose:
     project_src: "{{ docker_dir }}/{{ role_name }}"
     state: present
+  when: run_containers
+  become: true
+  ignore_errors: true
+
+- name: "Stop {{ role_name }}"
+  community.docker.docker_compose:
+    project_src: "{{ docker_dir }}/{{ role_name }}"
+    state: absent
+  when: not run_containers
   become: true
   ignore_errors: true
