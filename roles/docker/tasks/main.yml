@@ -55,3 +55,9 @@
   community.docker.docker_network:
     name: proxy
   become: true
+
+- name: Create monitoring network
+  community.docker.docker_network:
+    name: monitoring
+  when: software|select("equalto", "prometheus")
+  become: true
