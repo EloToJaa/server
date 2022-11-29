@@ -1,0 +1,24 @@
+version: '3'
+services:
+  grafana:
+    image: grafana/grafana-oss:latest
+    container_name: grafana
+    ports:
+      - 3000:3000
+    volumes:
+      - grafana-data:/var/lib/grafana
+    restart: unless-stopped
+    networks:
+      - proxy
+    labels:
+      traefik.enable: true
+      traefik.http.routers.grafana.entryPoints: https
+      traefik.http.services.grafana.loadbalancer.server.port: 3000
+      traefik.http.routers.grafana.middlewares: auth@file
+
+networks:
+  proxy:
+    external: true
+
+volumes:
+  grafana-data:
