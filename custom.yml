@@ -5,6 +5,8 @@ notifications: false
 docker_dir: /mnt/Server/Docker
 data_dir: /mnt/Data
 
+plextrakt_interval: 3h
+
 timezone: Europe/Warsaw
 
 shares:

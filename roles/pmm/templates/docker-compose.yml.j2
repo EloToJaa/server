@@ -7,7 +7,7 @@ services:
       - PUID={{ var.USER_UID }}
       - PGID={{ var.USER_GID }}
       - TZ={{ timezone }}
-      - PMM_TIME=03:00
+      - PMM_TIME={{ pmm_time }}
     volumes:
       - pmm-config:/config
     restart: unless-stopped

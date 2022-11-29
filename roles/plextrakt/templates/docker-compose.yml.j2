@@ -9,7 +9,7 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock:ro
     labels:
-      ofelia.job-run.plextraktsync.schedule: "@every 3h"
+      ofelia.job-run.plextraktsync.schedule: "@every {{ plextrakt_interval }}"
       ofelia.job-run.plextraktsync.container: "plextraktsync"
     restart: unless-stopped
   plextraktsync:
